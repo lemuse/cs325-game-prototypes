@@ -49,10 +49,10 @@ window.onload = function() {
         collector = game.add.sprite( game.world.centerX, game.world.centerY, 'collector' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
+        collector.anchor.setTo( 0.5, 0.5 );
         
         // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
+        collector.body.collideWorldBounds = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
