@@ -45,6 +45,7 @@ window.onload = function() {
     	for (var j = 0; j < 15; j++)
     	{
     		var obstacle = rocks.create(game.world.randomX, game.world.randomY, 'rock');
+    		obstacle.body.immovable = true;
     	}
 
         // Create a sprite at the center of the screen using the 'logo' image.
