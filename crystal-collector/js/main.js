@@ -34,7 +34,7 @@ window.onload = function() {
     	rocks = game.add.group();
     	rocks.enableBody = true;
 
-    	for (var i = 0; i < 20; i++)
+    	for (var i = 0; i < 10; i++)
     	{
     		var bcrys = crystals.create(game.world.randomX, game.world.randomY, 'blue crystal');
     		var gcrys = crystals.create(game.world.randomX, game.world.randomY, 'green crystal');
