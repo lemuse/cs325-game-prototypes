@@ -30,6 +30,7 @@ window.onload = function() {
 
     	crystals = game.add.group();
     	crystals.enableBody = true;
+    	crystals.body.collideWorldBounds = true;
 
     	rocks = game.add.group();
     	rocks.enableBody = true;
@@ -38,7 +39,7 @@ window.onload = function() {
     	for (var j = 0; j < 15; j++)
     	{
     		var obstacle = rocks.create(game.world.randomX, game.world.randomY, 'rock');
-    		obstacle.body.immovable = true;
+    		//obstacle.body.immovable = true;
     	}
 
     	for (var i = 0; i < 5; i++)
