@@ -72,7 +72,7 @@ window.onload = function() {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        collector.rotation = game.physics.arcade.accelerateToPointer( collector, game.input.activePointer, 300, 300, 300 );
+        collector.rotation = game.physics.arcade.accelerateToPointer( collector, game.input.activePointer, 500, 500, 500 );
 
         if(game.input.mousePointer.isDown)
         {
