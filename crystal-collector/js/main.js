@@ -50,15 +50,15 @@ window.onload = function() {
     	}
 
         // Create a sprite at the center of the screen using the 'logo' image.
-        collector = game.add.sprite( game.world.centerX, game.world.centerY, 'collector' );
+        //collector = game.add.sprite( game.world.centerX, game.world.centerY, 'collector' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
-        collector.anchor.setTo( 0.5, 0.5 );
+        //collector.anchor.setTo( 0.5, 0.5 );
 
-        game.physics.enable( collector, Phaser.Physics.ARCADE);
+        //game.physics.enable( collector, Phaser.Physics.ARCADE);
         
         // Make it bounce off of the world bounds.
-        collector.body.collideWorldBounds = true;
+        //collector.body.collideWorldBounds = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
@@ -73,7 +73,7 @@ window.onload = function() {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        collector.rotation = game.physics.arcade.accelerateToPointer( collector, game.input.activePointer, 500, 500, 500 );
+        //collector.rotation = game.physics.arcade.accelerateToPointer( collector, game.input.activePointer, 500, 500, 500 );
 
         if(game.input.mousePointer.isDown)
         {
