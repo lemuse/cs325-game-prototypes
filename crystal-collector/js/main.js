@@ -39,15 +39,16 @@ window.onload = function() {
     	for (var j = 0; j < 15; j++)
     	{
     		var obstacle = rocks.create(game.world.randomX, game.world.randomY, 'rock');
-    		//obstacle.body.immovable = true;
+    		game.physics.enable( obstacle, Phaser.Physics.ARCADE);
+    		obstacle.body.immovable = true;
     	}
 
     	for (var i = 0; i < 5; i++)
     	{
     		var bcrys = crystals.create(game.world.randomX, game.world.randomY, 'blue crystal');
     		var gcrys = crystals.create(game.world.randomX, game.world.randomY, 'green crystal');
-    		// game.physics.enable( bcrys, Phaser.Physics.ARCADE);
-    		// game.physics.enable( gcrys, Phaser.Physics.ARCADE);
+    		game.physics.enable( bcrys, Phaser.Physics.ARCADE);
+    		game.physics.enable( gcrys, Phaser.Physics.ARCADE);
     	}
 
         // Create a sprite at the center of the screen using the 'logo' image.
