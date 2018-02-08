@@ -29,12 +29,10 @@ window.onload = function() {
     	game.physics.startSystem(Phaser.Physics.ARCADE);
 
     	crystals = game.add.group();
-    	crystals.enableBody = true;
-    	crystals.body.collideWorldBounds = true;
-
     	rocks = game.add.group();
-    	rocks.enableBody = true;
-    	rocks.body.immovable = true;
+    	game.physics.enable( crystals, Phaser.Physics.ARCADE);
+    	game.physics.enable( rocks, Phaser.Physics.ARCADE);
+    	
 
     	for (var j = 0; j < 15; j++)
     	{
@@ -51,6 +49,11 @@ window.onload = function() {
     		// game.physics.enable( gcrys, Phaser.Physics.ARCADE);
     	}
 
+    	rocks.enableBody = true;
+    	rocks.body.immovable = true;
+    	crystals.enableBody = true;
+    	crystals.body.collideWorldBounds = true;
+
         // Create a sprite at the center of the screen using the 'logo' image.
         // collector = game.add.sprite( game.world.centerX, game.world.centerY, 'collector' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
@@ -60,7 +63,7 @@ window.onload = function() {
         // game.physics.enable( collector, Phaser.Physics.ARCADE);
         
         // Make it bounce off of the world bounds.
-        //collector.body.collideWorldBounds = true;
+        // collector.body.collideWorldBounds = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
