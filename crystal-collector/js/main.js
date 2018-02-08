@@ -14,7 +14,7 @@ window.onload = function() {
     
     function preload() {
         // Load an image and call it 'logo'.
-        //game.load.image( 'collector', 'assets/cursor.jpeg' );
+        game.load.image( 'collector', 'assets/cursor.jpeg' );
         game.load.image( 'green crystal', 'assets/greencrystal.png' );
         game.load.image( 'blue crystal', 'assets/bluecrystal.png' );
         game.load.image( 'rock', 'assets/rock.png' );
@@ -22,7 +22,7 @@ window.onload = function() {
     
     var crystals;
     var rocks;
-    //var collector;
+    var collector;
     
     function create() {
 
@@ -52,12 +52,12 @@ window.onload = function() {
     	}
 
         // Create a sprite at the center of the screen using the 'logo' image.
-        //collector = game.add.sprite( game.world.centerX, game.world.centerY, 'collector' );
+        collector = game.add.sprite( game.world.centerX, game.world.centerY, 'collector' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
-        //collector.anchor.setTo( 0.5, 0.5 );
+        collector.anchor.setTo( 0.5, 0.5 );
 
-        //game.physics.enable( collector, Phaser.Physics.ARCADE);
+        game.physics.enable( collector, Phaser.Physics.ARCADE);
         
         // Make it bounce off of the world bounds.
         //collector.body.collideWorldBounds = true;
