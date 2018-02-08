@@ -14,7 +14,7 @@ window.onload = function() {
     
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'collector', 'assets/cursor.jpeg' );
+        //game.load.image( 'collector', 'assets/cursor.jpeg' );
         game.load.image( 'green crystal', 'assets/greencrystal.png' );
         game.load.image( 'blue crystal', 'assets/bluecrystal.png' );
         game.load.image( 'rock', 'assets/rock.png' );
@@ -22,7 +22,7 @@ window.onload = function() {
     
     var crystals;
     var rocks;
-    var collector;
+    //var collector;
     
     function create() {
 
