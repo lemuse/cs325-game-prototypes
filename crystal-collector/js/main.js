@@ -13,33 +13,36 @@ window.onload = function() {
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
-        // Load an image and call it 'logo'.
-        // game.load.image( 'collector', 'assets/cursor.jpeg' );
+    	//load the images to use in the game, give them names and provide a filepath
         game.load.image( 'green crystal', 'assets/greencrystal.png' );
         game.load.image( 'blue crystal', 'assets/bluecrystal.png' );
         game.load.image( 'rock', 'assets/rock.png' );
     }
     
+    //initialize group variables
     var crystals;
     var rocks;
-    // var collector;
     
     function create() {
 
+    	//account for the use of physics in the game
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
+        //create group "crystals" and enableBody
         crystals = game.add.group();
         crystals.enableBody = true;
 
+        //do same for rocks
         rocks = game.add.group();
         rocks.enableBody = true;
 
+        //populate the game screen with crystals and rocks
         for (var i = 0; i < 5; i++)
         {
             var bcrys = crystals.create(game.world.randomX, game.world.randomY, 'blue crystal');
             var gcrys = crystals.create(game.world.randomX, game.world.randomY, 'green crystal');
-            // game.physics.enable( bcrys, Phaser.Physics.ARCADE);
-            // game.physics.enable( gcrys, Phaser.Physics.ARCADE);
+
+            //specify that the crystals cannot go out of frame
             bcrys.body.collideWorldBounds = true;
             gcrys.body.collideWorldBounds = true;
         }
@@ -47,20 +50,10 @@ window.onload = function() {
         for (var j = 0; j < 15; j++)
         {
             var obstacle = rocks.create(game.world.randomX, game.world.randomY, 'rock');
+            //specify that rocks do not move; they are obstacles
             obstacle.body.immovable = true;
         }
 
-        // Create a sprite at the center of the screen using the 'logo' image.
-        // collector = game.add.sprite( game.world.centerX, game.world.centerY, 'collector' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        // collector.anchor.setTo( 0.5, 0.5 );
-
-        // game.physics.enable( collector, Phaser.Physics.ARCADE);
-        
-        // Make it bounce off of the world bounds.
-        // collector.body.collideWorldBounds = true;
-        
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
@@ -69,23 +62,20 @@ window.onload = function() {
     }
     
     function update() {
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        // collector.rotation = game.physics.arcade.accelerateToPointer( collector, game.input.activePointer, 500, 500, 500 );
-
+    	//checks game state for if the mouse is clicked
         if(game.input.mousePointer.isDown)
         {
+        	//moves crystals towards the cursor at a speed of 200 pixels per second
             crystals.forEach(game.physics.arcade.moveToPointer, game.physics.arcade, false, 200);
         }
         else
         {
+        	//crystals do not move in either x or y direction
             crystals.setAll('body.velocity.x',0);
             crystals.setAll('body.velocity.y',0);
         }
 
+        //establish that crystals can collide with rocks
         var hitRock = game.physics.arcade.collide(crystals, rocks);
     }
 };
