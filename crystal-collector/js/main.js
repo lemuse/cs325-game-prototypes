@@ -14,43 +14,50 @@ window.onload = function() {
     
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'curosr', 'assets/cursor.jpeg' ); //source: 123rf.com
-        game.load.image( 'crystal1', 'assets/greencrystal.png' ); //source: pixabay.com
-        game.load.image( 'crystal2', 'assets/bluecrystal.png' ); //source: pixabay.com
-        game.load.image( 'rock', 'assets/rock.png' ); //source: dreamstime.com
+        game.load.image( 'collector', 'assets/cursor.jpeg' );
+        game.load.image( 'green crystal', 'assets/greencrystal.png' );
+        game.load.image( 'blue crystal', 'assets/bluecrystal.png' );
+        game.load.image( 'rock', 'assets/rock.png' );
     }
     
-    var bouncy;
-    var crys1, crys2, rock1, rock2, rock3;
+    var crystals;
     var rocks;
+    var collector;
     
     function create() {
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    	game.physics.startSystem(Phaser.physics.ARCADE);
+
+    	crystals = game.add.group()
+    	crystals.enableBody = true;
+
+    	rocks = game.add.group();
+    	rocks.enableBody = true;
+
+    	for (var i = 0; i < 20; i++)
+    	{
+    		var bcrys = crystals.create(game.world.randomX, game.world.randomY, 'blue crystal');
+    		var gcrys = crystals.create(game.world.randomX, game.world.randomY, 'green crystal');
+    	}
+
+    	for (var j = 0; j < 15; j++)
+    	{
+    		var obstacle = rocks.create(game.world.randomX, game.world.randomY, 'rock');
+    	}
+
         // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'cursor' );
+        collector = game.add.sprite( game.world.centerX, game.world.centerY, 'collector' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         bouncy.anchor.setTo( 0.5, 0.5 );
-
-        rocks = game.add.group();
-        rocks.enableBody = true;
-
-        crys1 = game.add.sprite( game.world.centerX + 100, game.world.centerY + 350, 'crystal1' );
-        crys2 = game.add.sprite( game.world.centerX - 210, game.world.centerY - 166, 'crystal2' );
-        rock1 = rocks.create(5, 30, 'rock1');
-        rock2 = rocks.create(30, game.world.height - 23, 'rock2');
-        rock3 = rocks.create(40, 33, 'rock3');
         
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        game.physics.enable( rocks, Phaser.Physics.ARCADE );
         // Make it bounce off of the world bounds.
         bouncy.body.collideWorldBounds = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "You're a geologist-in-training; find the crystals.", style );
+        var text = game.add.text( game.world.centerX, 15, "Hold down the mouse to gather the crystals to you.", style );
         text.anchor.setTo( 0.5, 0.0 );
     }
     
@@ -60,9 +67,18 @@ window.onload = function() {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 300, 300, 300 );
+        collector.rotation = game.physics.arcade.accelerateToPointer( collector, game.input.activePointer, 300, 300, 300 );
 
-        var hitRock = game.physics.arcade.colide( bouncy, rocks );
+        if(game.input.mousePointer.isDown)
+        {
+        	crystals.forEach(game.physics.arcade.moveToPointer, game.physics.arcade, false, 200);
+        }
+        else
+        {
+        	crystals.setAll('body.velocity.x',0);
+        	crystals.setAll('body.velocity.y',0);
+        }
 
+        var hitRock = game.physics.arcade.collide(crystals, rocks);
     }
 };
