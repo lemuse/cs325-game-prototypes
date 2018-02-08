@@ -33,7 +33,6 @@ window.onload = function() {
 
         rocks = game.add.group();
         rocks.enableBody = true;
-        rocks.body.immovable = true;
 
         for (var i = 0; i < 5; i++)
         {
