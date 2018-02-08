@@ -40,7 +40,7 @@ window.onload = function() {
     		var obstacle = rocks.create(game.world.randomX, game.world.randomY, 'rock');
     		obstacle.body.immovable = true;
     	}
-    	
+
     	for (var i = 0; i < 5; i++)
     	{
     		var bcrys = crystals.create(game.world.randomX, game.world.randomY, 'blue crystal');
@@ -63,7 +63,7 @@ window.onload = function() {
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Hold down the mouse to gather the crystals to you.", style );
+        var text = game.add.text( game.world.centerX, 15, "Hold down the mouse to gather the crystals.", style );
         text.anchor.setTo( 0.5, 0.0 );
     }
     
