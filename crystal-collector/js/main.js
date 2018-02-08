@@ -26,9 +26,9 @@ window.onload = function() {
     
     function create() {
 
-    	game.physics.startSystem(Phaser.physics.ARCADE);
+    	game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    	crystals = game.add.group()
+    	crystals = game.add.group();
     	crystals.enableBody = true;
 
     	rocks = game.add.group();
@@ -38,6 +38,8 @@ window.onload = function() {
     	{
     		var bcrys = crystals.create(game.world.randomX, game.world.randomY, 'blue crystal');
     		var gcrys = crystals.create(game.world.randomX, game.world.randomY, 'green crystal');
+    		// game.physics.enable( bcrys, Phaser.Physics.ARCADE);
+    		// game.physics.enable( gcrys, Phaser.Physics.ARCADE);
     	}
 
     	for (var j = 0; j < 15; j++)
@@ -50,6 +52,8 @@ window.onload = function() {
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         collector.anchor.setTo( 0.5, 0.5 );
+
+        game.physics.enable( collector, Phaser.Physics.ARCADE);
         
         // Make it bounce off of the world bounds.
         collector.body.collideWorldBounds = true;
