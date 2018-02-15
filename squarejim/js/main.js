@@ -8,8 +8,8 @@ window.onload = function() {
 
         //load tilemap, tile images, sprite images, etc.
         game.load.tilemap('tilemap', 'assets/background.json');
-        game.load.image('ocean', 'assets/ocean.png');
-        game.load.image('square', 'assets/square.png');
+        game.load.image('ocean', 'assets/ocean.tsx');
+        game.load.image('square', 'assets/square.tsx');
         game.load.image('squarejim', 'assets/squarejim.png');
         game.load.image('s','assets/letter_s.png');
         game.load.image('q', 'assets/letter_q.png');
@@ -112,7 +112,7 @@ window.onload = function() {
 
     function update() {
 
-        game.physics.ARCADE.collide(squarejim,groundlayer);
+        game.physics.ARCADE.collide(squarejim, groundlayer);
 
         //calls collectLetters function whenever SquareJim runs into letters
         game.physics.ARCADE.collide(squarejim, letters, collectLetters, null, this);
