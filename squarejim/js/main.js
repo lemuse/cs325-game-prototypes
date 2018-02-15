@@ -1,5 +1,5 @@
 
-var game = new Phaser.Game(800 600, Phaser.CANVAS, 'squarejim', { preload: preload, create: create, update: update, render : render });
+var game = new Phaser.Game(12800 640, Phaser.AUTO, 'game', { preload: preload, create: create, update: update, collectLetters: collectLetters, resetGame: resetGame });
 
 function preload() {
 
@@ -49,9 +49,6 @@ var groundlayer;
 
 
 function create() {
-
-    //  Modify the world and camera bounds
-    game.world.resize(128000, 640);
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
