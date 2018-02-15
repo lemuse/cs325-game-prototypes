@@ -100,7 +100,7 @@ window.onload = function() {
         squarejim.body.velocity.x = 100;
 
         //set the camera to follow SquareJim
-        game.camera.follow(sqaurejim);
+        game.camera.follow(squarejim);
 
         //end Josh Morony tutorial section
         //* * * * * * * * * * * *
@@ -126,7 +126,7 @@ window.onload = function() {
         //game.physics.ARCADE.collide(squarejim, groundlayer);
 
         //calls collectLetters function whenever SquareJim runs into letters
-        game.physics.ARCADE.collide(squarejim, letters, collectLetters, null, this);
+        game.Physics.ARCADE.collide(squarejim, letters, collectLetters);
 
         //check/set number of letters collected
         stats.text = "Letters: " + total_letters;
