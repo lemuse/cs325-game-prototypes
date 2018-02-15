@@ -156,6 +156,7 @@ window.onload = function() {
         //game.physics.ARCADE.collide(squarejim, groundlayer);
 
         //calls collectLetters function whenever SquareJim runs into letters
+        letters.forEach(game.physics.arcade.collide(squarejim, this), game.physics.arcade);
         var hit_s = game.Physics.ARCADE.collide(squarejim, s);
         var hit_q = game.Physics.ARCADE.collide(squarejim, q);
         var hit_u = game.Physics.ARCADE.collide(squarejim, u);
