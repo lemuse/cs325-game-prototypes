@@ -7,9 +7,9 @@ window.onload = function() {
     function preload() {
 
         //load tilemap, tile images, sprite images, etc.
-        game.load.tilemap('tilemap', 'assets/background.json');
-        game.load.image('ocean', 'assets/ocean.tsx');
-        game.load.image('square', 'assets/square.tsx');
+        //game.load.tilemap('tilemap', 'assets/background.json');
+        //game.load.image('ocean', 'assets/ocean.tsx');
+        //game.load.image('square', 'assets/square.tsx');
         game.load.image('squarejim', 'assets/squarejim.png');
         game.load.image('s','assets/letter_s.png');
         game.load.image('q', 'assets/letter_q.png');
@@ -72,22 +72,22 @@ window.onload = function() {
         //* * * * * * * * * * *
 
         //load tilemap, tileset, layers, and collision states
-        map = game.add.tilemap('tilemap');
-        map.addTilesetImage('square','square');
-        map.addTilesetImage('ocean','ocean');
-        backgroundlayer = map.createLayer('BackgroundLayer');
-        groundlayer = map.createLayer('GroundLayer');
-        map.setCollisionBetween(1,100,true,'GroundLayer');
-        groundlayer.resizeWorld();
+        // map = game.add.tilemap('tilemap');
+        // map.addTilesetImage('square','square');
+        // map.addTilesetImage('ocean','ocean');
+        // backgroundlayer = map.createLayer('BackgroundLayer');
+        // groundlayer = map.createLayer('GroundLayer');
+        // map.setCollisionBetween(1,100,true,'GroundLayer');
+        // groundlayer.resizeWorld();
 
         //create sprite for SquareJim
         squarejim = game.add.sprite(50, game.world.centerY, 'squarejim');
 
         //give SquareJim some body mechanics, i.e. gravity, and a bounce in his step
         game.physics.enable(squarejim);
-        squarejim.body.bounce.y = 0.2;
-        squarejim.body.gravity.y = 2000;
-        squarejim.body.gravity.x = 20;
+        // squarejim.body.bounce.y = 0.2;
+        // squarejim.body.gravity.y = 2000;
+        // squarejim.body.gravity.x = 20;
         squarejim.body.velocity.x = 100;
 
         //set the camera to follow SquareJim
@@ -112,7 +112,7 @@ window.onload = function() {
 
     function update() {
 
-        game.physics.ARCADE.collide(squarejim, groundlayer);
+        //game.physics.ARCADE.collide(squarejim, groundlayer);
 
         //calls collectLetters function whenever SquareJim runs into letters
         game.physics.ARCADE.collide(squarejim, letters, collectLetters, null, this);
@@ -134,10 +134,13 @@ window.onload = function() {
         {
             squarejim.body.velocity.x += 4;
         }
-        //give enough y velocity to clear highest section
         else if (cursors.up.isDown)
         {
-            squarejim.body.velocity.y -= 300;
+            squarejim.body.velocity.y -= 4;
+        }
+        else if(cursors.down.isDown)
+        {
+            squarejim.body.velocity.y += 4;
         }
 
     }
