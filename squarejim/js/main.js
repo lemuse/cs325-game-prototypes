@@ -2,15 +2,11 @@
 
 window.onload = function() {
 
-    var game = new Phaser.Game(12800 640, Phaser.AUTO, 'game', { preload: preload, create: create, update: update, collectLetters: collectLetters, resetGame: resetGame } );
+    var game = new Phaser.Game( 12800, 640, Phaser.AUTO, 'game', { preload: preload, create: create, update: update, collectLetters: collectLetters, resetGame: resetGame } );
 
     function preload() {
 
-        game.stage.backgroundColor = '#007236';
-
-    // game.load.image('mushroom', 'assets/sprites/mushroom2.png');
-    // game.load.image('sonic', 'assets/sprites/sonic_havok_sanity.png');
-    // game.load.image('phaser', 'assets/sprites/phaser1.png');
+        //load tilemap, tile images, sprite images, etc.
         game.load.tilemap('tilemap', 'assets/background.json');
         game.load.image('ocean', 'assets/ocean.png');
         game.load.image('square', 'assets/square.png');
@@ -26,6 +22,8 @@ window.onload = function() {
         game.load.image('m','assets/letter_m.png');
 
     }
+
+    //DECLARE GAME VARIABLES:
 
     //cursor setup
     var cursors;
@@ -50,7 +48,7 @@ window.onload = function() {
     var backgroundlayer;
     var groundlayer;
 
-
+    //Build game
     function create() {
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
