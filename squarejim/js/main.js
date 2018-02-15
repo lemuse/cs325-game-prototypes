@@ -76,6 +76,7 @@ window.onload = function() {
         var m = letters.create(game.world.randomX, game.world.randomY, 'm');
         m.body.collideWorldBounds = true;
 
+        game.physics.arcade.enable([s,q,u,a,r,e,j,i,m]);
         //this section courtesy of Josh Morony's "Create a Running Platformer Game in Phaser with Tilemaps"
         //link in index.html file
         //* * * * * * * * * * *
@@ -119,6 +120,10 @@ window.onload = function() {
 
         //prep possibility for resetting game upon victory
         game.camera.onFadeComplete.add(resetGame, this);
+
+        //collision function(s) - courtesy of Phaser example "On Collide Event"
+        letters.body.onCollide = new Phaser.Signal();
+        letters.body.onCollide.add(collectLetters, squarejim, this);
     }
 
     function update() {
@@ -126,7 +131,7 @@ window.onload = function() {
         //game.physics.ARCADE.collide(squarejim, groundlayer);
 
         //calls collectLetters function whenever SquareJim runs into letters
-        game.Physics.ARCADE.collide(squarejim, letters, collectLetters);
+        game.Physics.arcade.collide(squarejim, letters, collectLetters);
 
         //check/set number of letters collected
         stats.text = "Letters: " + total_letters;
