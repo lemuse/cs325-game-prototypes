@@ -44,9 +44,9 @@ window.onload = function() {
     var messagetxt;
 
     //map-related variables
-    var map;
-    var backgroundlayer;
-    var groundlayer;
+    // var map;
+    // var backgroundlayer;
+    // var groundlayer;
 
     //Build game
     function create() {
