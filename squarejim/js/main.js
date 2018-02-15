@@ -58,14 +58,23 @@ window.onload = function() {
 
         //create collectibles to set loose on the world
         var s = letters.create(game.world.randomX, game.world.randomY, 's');
+        s.body.collideWorldBounds = true;
         var q = letters.create(game.world.randomX, game.world.randomY, 'q');
+        q.body.collideWorldBounds = true;
         var u = letters.create(game.world.randomX, game.world.randomY, 'u');
+        u.body.collideWorldBounds = true;
         var a = letters.create(game.world.randomX, game.world.randomY, 'a');
+        a.body.collideWorldBounds = true;
         var r = letters.create(game.world.randomX, game.world.randomY, 'r');
+        r.body.collideWorldBounds = true;
         var e = letters.create(game.world.randomX, game.world.randomY, 'e');
+        e.body.collideWorldBounds = true;
         var j = letters.create(game.world.randomX, game.world.randomY, 'j');
+        j.body.collideWorldBounds = true;
         var i = letters.create(game.world.randomX, game.world.randomY, 'i');
+        i.body.collideWorldBounds = true;
         var m = letters.create(game.world.randomX, game.world.randomY, 'm');
+        m.body.collideWorldBounds = true;
 
         //this section courtesy of Josh Morony's "Create a Running Platformer Game in Phaser with Tilemaps"
         //link in index.html file
@@ -98,6 +107,8 @@ window.onload = function() {
 
         //set input to be keyboard arrow keys
         cursors = game.input.keyboard.createCursorKeys();
+
+        squarejim.body.collideWorldBounds = true;
 
         //set instruction text style, placement, and color
         var font = { font: "24px Arial", fill: "#ffffff", align: "center" };
