@@ -76,7 +76,7 @@ window.onload = function() {
         var m = letters.create(game.world.randomX, game.world.randomY, 'm');
         m.body.collideWorldBounds = true;
 
-        game.physics.arcade.enable([s,q,u,a,r,e,j,i,m]);
+        game.physics.enable([s,q,u,a,r,e,j,i,m], Phaser.Physics.ARCADE);
         //this section courtesy of Josh Morony's "Create a Running Platformer Game in Phaser with Tilemaps"
         //link in index.html file
         //* * * * * * * * * * *
