@@ -59,22 +59,31 @@ window.onload = function() {
         //create collectibles to set loose on the world
         var s = letters.create(game.world.randomX, game.world.randomY, 's');
         s.body.collideWorldBounds = true;
+        s.body.immovable = true;
         var q = letters.create(game.world.randomX, game.world.randomY, 'q');
         q.body.collideWorldBounds = true;
+        q.body.immovable = true;
         var u = letters.create(game.world.randomX, game.world.randomY, 'u');
         u.body.collideWorldBounds = true;
+        u.body.immovable - true;
         var a = letters.create(game.world.randomX, game.world.randomY, 'a');
         a.body.collideWorldBounds = true;
+        a.body.immovable = true;
         var r = letters.create(game.world.randomX, game.world.randomY, 'r');
         r.body.collideWorldBounds = true;
+        r.body.immovable = true;
         var e = letters.create(game.world.randomX, game.world.randomY, 'e');
         e.body.collideWorldBounds = true;
+        e.body.immovable = true;
         var j = letters.create(game.world.randomX, game.world.randomY, 'j');
         j.body.collideWorldBounds = true;
+        j.body.immovable = true;
         var i = letters.create(game.world.randomX, game.world.randomY, 'i');
         i.body.collideWorldBounds = true;
+        i.body.immovable = true;
         var m = letters.create(game.world.randomX, game.world.randomY, 'm');
         m.body.collideWorldBounds = true;
+        m.body.immovable = true;
 
         game.physics.enable([s,q,u,a,r,e,j,i,m], Phaser.Physics.ARCADE);
         //this section courtesy of Josh Morony's "Create a Running Platformer Game in Phaser with Tilemaps"
@@ -147,15 +156,15 @@ window.onload = function() {
         //game.physics.ARCADE.collide(squarejim, groundlayer);
 
         //calls collectLetters function whenever SquareJim runs into letters
-        game.Physics.arcade.collide(squarejim, s);
-        game.Physics.arcade.collide(squarejim, q);
-        game.Physics.arcade.collide(squarejim, u);
-        game.Physics.arcade.collide(squarejim, a);
-        game.Physics.arcade.collide(squarejim, r);
-        game.Physics.arcade.collide(squarejim, e);
-        game.Physics.arcade.collide(squarejim, j);
-        game.Physics.arcade.collide(squarejim, i);
-        game.Physics.arcade.collide(squarejim, m);
+        var hit_s = game.Physics.ARCADE.collide(squarejim, s);
+        var hit_q = game.Physics.ARCADE.collide(squarejim, q);
+        var hit_u = game.Physics.ARCADE.collide(squarejim, u);
+        var hit_a = game.Physics.ARCADE.collide(squarejim, a);
+        var hit_r = game.Physics.ARCADE.collide(squarejim, r);
+        var hit_e = game.Physics.ARCADE.collide(squarejim, e);
+        var hit_j = game.Physics.ARCADE.collide(squarejim, j);
+        var hit_i = game.Physics.ARCADE.collide(squarejim, i);
+        var hit_m = game.Physics.ARCADE.collide(squarejim, m);
 
         //check/set number of letters collected
         stats.text = "Letters: " + total_letters;
