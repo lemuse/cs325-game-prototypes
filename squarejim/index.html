@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Hello! Amaze!</title>
+    <title>Find your name, find yourself!</title>
     <script src="js/phaser.js"></script>
     <script src="js/main.js"></script>
 
@@ -22,72 +22,112 @@ body
 <body>
 <div id="game"></div>
 <div id="readme">
-<h2>Your game title</h2>
+<h2>SquareJim</h2>
 
 <ul>
 <li><strong>Originality:</strong>
 What is original about your game?
+It's an interesting take on a standard collection game, where you have to build up your identity from scratch.
 </li>
 
 <li><strong>Technical Merit:</strong>
 What is interesting about your game technology?
+I used Tiled to create the tilemap (it was an adventure) and I utilized a lot of different images.
 </li>
 
 <li><strong>Prototype Postmortem:</strong>
 What did you learn from this prototype?
+-How to use Tiled to create tilemaps, how to initialize keyboard commands, how to reset a game, how to "kill" things
 What was the easiest or hardest part of making it?
+-The hardest part was definitely using Tiled. It's not very intuitive and doesn't offer a lot of text options.
 </li>
 
 <li><strong>Prototype Assets:</strong>
 Did you make your prototype assets from scratch? Did you borrow them? Cite your sources here.
 <ul>
-<li>Bouncing Phaser image: <a href="https://phaser.io/download/logo">Phaser logo</a></li>
+
+<li> <a href="https://opengameart.org/sites/default/files/Preview_143.png">Ocean Background</a></li>
+
+<li><a href="https://www.iconsdb.com/icons/download/gray/square-256.ico">Square Blocks</a></li>
+
+<li><a href="http://icons.mysitemyway.com/legacy-icon/112651-glowing-purple-neon-icon-alphanumeric-letter-s/">Letter S</a></li>
+
+<li><a href="http://icons.mysitemyway.com/legacy-icon/110707-glowing-green-neon-icon-alphanumeric-letter-qq/">Letter Q</a></li>
+
+<li><a href="http://chatfield.k12.mn.us/sitecollectionimages/forms/thumbnails.aspx?Paged=TRUE&p_SortBehavior=0&p_FileLeafRef=069084-black-paint-splatter-icon-alphanumeric-letter-ll.png&p_ID=1122&RootFolder=%2Fsitecollectionimages%2Fblack-paint-splatter-icon-alphanumeric-full-set%2F069172-black-paint-splatter-icon-alphanumeric-full-set&PageFirstRow=961&&View=%7B64CF9839-D484-4643-A0BE-A27A59CB1320%7D">Letter U</a></li>
+
+<li><a href="https://wingsofwhimsy.wordpress.com/2013/04/11/drop-caps-capital-letter-a/">Letter A</a></li>
+
+<li><a href="https://www.pinterest.com/pin/592927107162815649/">Letter R</a></li>
+
+<li><a href="https://eddyrailgun.deviantart.com/art/Alien-glow-letter-E-logo-522470380">Letter E</a></li>
+
+<li><a href="https://www.freepngs.com/letters-png">Letter J</a></li>
+
+<li><a href="http://icons.mysitemyway.com/legacy-icon/068041-3d-transparent-glass-icon-alphanumeric-letter-i/">Letter I</a></li>
+
+<li><a href="https://www.hellovinoth.com/brazil-paint-font-letter-m/">Letter M</a></li>
+
+<li>SquareJim (i.e. <a href="https://theblazepage.deviantart.com/art/Doodlebob-Sprite-637477167">DoodleBob</a>)</li>
 </ul>
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
 Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
+<li>Phaser Example: <a href="http://phaser.io/examples/v2/camera/fixed-to-camera">Fixed to Camera</a></li>
+<li>Josh Morony's <a href="https://www.joshmorony.com/create-a-running-platformer-game-in-phaser-with-tilemaps/">Create a Running Platformer Game in Phaser with Tilemaps</a></li>
 </li>
 
 <li><strong>High Concept:</strong>
 A one-sentence summary of your game.
+-SquareJim has forgotten his name and must seek out the missing letters in order to remember it!
 </li>
 
 <li><strong>Theme:</strong>
 State which of the Storymatic themes you used.
+-Lost all identification.
 </li>
 
 <li><strong>Mandated Variety:</strong>
 State which input, randomness, genre, and play style you used in this prototype.
+-Standard keyboard (arrowkeys) input, 2D platformer game, collectible-seeking playstyle
 </li>
 
 <li><strong>Prototype Goal:</strong>
 What game mechanic is this prototype evaluating?
+-How to build and populate functional scenery.
 </li>
 
 <li><strong>Player Experience Goals:</strong>
 What experience do you want players to have when playing your game?
+-Fun and nostalgic, reminiscent of Mario Bros. or other simple platformer games.
 </li>
 
 <li><strong>Gameplay:</strong>
 A paragraph describing the actions the player can perform, the system dynamics, and the core mechanic. Include a concise explanation of the prototype’s inputs and their expected effects (how to play). You can also describe game play that is not in the prototype. You may include mock-up images for parts of the game not in the prototype.
+
+Player can move left (left arrow key) and right (right arrow key), jump (up arrow key), and collect letters. Collecting letters increases the letter counter, which maxes out at 9 when all letters have been collected. Future play would have the acquired letters spelling out the name on the screen (like hangman) as they are collected.
 </li>
 
 <li><strong>Strategies:</strong>
 What player strategies do you expect will be effective at playing this game?
+-Players should traverse the world from one end to the other in order to collect all the letters. (Though because of the random generation, the letters may not all necessarily be acquirable).
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
 A paragraph about the world your game is set in and who the characters are. What makes the game world and its occupants unique and interesting? Do the tokens represent something? If the game has a backstory, mention it here. If the game is abstract, then say so.
 How will the dramatic tension interact with the gameplay tension?
+-It was inspired by the episode of SpongeBob in which the eponymous hero loses his nametag and goes on an elaborate (if repetitive) adventure to find it. By utilizing a simplified DoodleBob sprite, I wanted to call forth any nostalgia players might have for SpongeBob without it being an obvious knock-off. Dramatic tension (the loss of identity) is what drives the gameplay, forcing the players to resolve the dramatic conflict in order to win.
 </li>
 
 <li><strong>Target Audience:</strong>
 A single sentence that describes the demographic you're trying to reach.
+Millenials with emotional investment in 2D platformers and SpongeBob.
 </li>
 
 <li><strong>Play Time:</strong>
 How long does your game take to play?
+30 seconds - 2 minutes.
 </li>
 
 </ul>
