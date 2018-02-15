@@ -73,6 +73,7 @@ function create() {
     //link in index.html file
     //* * * * * * * * * * *
 
+    //load tilemap, tileset, layers, and collision states
     map = game.add.tilemap('tilemap');
     map.addTilesetImage('square','square');
     map.addTilesetImage('ocean','ocean');
@@ -81,6 +82,7 @@ function create() {
     map.setCollisionBetween(1,100,true,'GroundLayer');
     groundlayer.resizeWorld();
 
+    //create sprite for SquareJim
     squarejim = game.add.sprite(50, game.world.centerY, 'squarejim');
 
     //give SquareJim some body mechanics, i.e. gravity, and a bounce in his step
@@ -90,26 +92,24 @@ function create() {
     squarejim.body.gravity.x = 20;
     squarejim.body.velocity.x = 100;
 
+    //set the camera to follow SquareJim
     game.camera.follow(sqaurejim);
 
     //end Josh Morony tutorial section
     //* * * * * * * * * * * *
 
+    //set input to be keyboard arrow keys
     cursors = game.input.keyboard.createCursorKeys();
 
+    //set instruction text style, placement, and color
      var font = { font: "24px Arial", fill: "#ffffff", align: "center" };
      stats = game.add.text(50,50,'Letters Collected',font);
      messagetxt = game.add.text(50,50, MESSAGE, font);
      total_letters = TOTAL_LETTERS;
      stats.fixedToCamera = true;
 
+     //prep possibility for resetting game upon victory
      game.camera.onFadeComplete.add(resetGame, this);
-
-
-}
-
-function gameReset() {
-    game.camera.resetFX();
 }
 
 function update() {
@@ -119,14 +119,15 @@ function update() {
     //calls collectLetters function whenever SquareJim runs into letters
     game.physics.ARCADE.collide(squarejim, letters, collectLetters, null, this);
 
+    //check/set number of letters collected
     stats.text = "Letters: " + total_letters;
     if(total_letters === MAX_LETTERS)
     {
         game.camera.fade(0x000000, 3600);
         messagetxt.text = "Congratulations, S Q U A R E J I M";
-
     }
 
+    //check keyboard input and move SquareJim accordingly
     if (cursors.left.isDown)
     {
         squarejim.body.velocity.x -= 4;
