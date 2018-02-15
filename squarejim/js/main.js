@@ -198,7 +198,7 @@ window.onload = function() {
     //function which removes letters from play when collided with and increments letter tally
     function collectLetters(squarejim,letters) {
 
-        letters.kill();
+        letters.destroy();
         total_letters++;
 
     }
