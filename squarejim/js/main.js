@@ -122,8 +122,24 @@ window.onload = function() {
         game.camera.onFadeComplete.add(resetGame, this);
 
         //collision function(s) - courtesy of Phaser example "On Collide Event"
-        letters.body.onCollide = new Phaser.Signal();
-        letters.body.onCollide.add(collectLetters, squarejim, this);
+        s.body.onCollide = new Phaser.Signal();
+        s.body.onCollide.add(collectLetters, squarejim, this);
+        q.body.onCollide = new Phaser.Signal();
+        q.body.onCollide.add(collectLetters, squarejim, this);
+        u.body.onCollide = new Phaser.Signal();
+        u.body.onCollide.add(collectLetters, squarejim, this);
+        a.body.onCollide = new Phaser.Signal();
+        a.body.onCollide.add(collectLetters, squarejim, this);
+        r.body.onCollide = new Phaser.Signal();
+        r.body.onCollide.add(collectLetters, squarejim, this);
+        e.body.onCollide = new Phaser.Signal();
+        e.body.onCollide.add(collectLetters, squarejim, this);
+        j.body.onCollide = new Phaser.Signal();
+        j.body.onCollide.add(collectLetters, squarejim, this);
+        i.body.onCollide = new Phaser.Signal();
+        i.body.onCollide.add(collectLetters, squarejim, this);
+        m.body.onCollide = new Phaser.Signal();
+        m.body.onCollide.add(collectLetters, squarejim, this);
     }
 
     function update() {
@@ -131,7 +147,15 @@ window.onload = function() {
         //game.physics.ARCADE.collide(squarejim, groundlayer);
 
         //calls collectLetters function whenever SquareJim runs into letters
-        game.Physics.arcade.collide(squarejim, letters, collectLetters);
+        game.Physics.arcade.collide(squarejim, s);
+        game.Physics.arcade.collide(squarejim, q);
+        game.Physics.arcade.collide(squarejim, u);
+        game.Physics.arcade.collide(squarejim, a);
+        game.Physics.arcade.collide(squarejim, r);
+        game.Physics.arcade.collide(squarejim, e);
+        game.Physics.arcade.collide(squarejim, j);
+        game.Physics.arcade.collide(squarejim, i);
+        game.Physics.arcade.collide(squarejim, m);
 
         //check/set number of letters collected
         stats.text = "Letters: " + total_letters;
@@ -162,9 +186,9 @@ window.onload = function() {
     }
 
     //function which removes letters from play when collided with and increments letter tally
-    function collectLetters(squarejim,letter) {
+    function collectLetters(squarejim,letters) {
 
-        letter.kill();
+        letters.kill();
         total_letters++;
 
     }
