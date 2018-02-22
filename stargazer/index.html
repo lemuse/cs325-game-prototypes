@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <title>Stargazer</title>
     <script src="js/phaser.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/start.js"></script>
+    <script src="js/1stay.js"></script>
+    <script src="js/1move.js"></script>
     <script src="js/main.js"></script>
 
 <style>
@@ -22,73 +26,90 @@ body
 <body>
 <div id="game"></div>
 <div id="readme">
-<h2>Your game title</h2>
+<h2>Stargazer</h2>
+
+<h3><a href=Stargazer.html>Here is a working copy of the game written using Twine</a></h3>
 
 <ul>
 <li><strong>Originality:</strong>
 What is original about your game?
-<p>I began with another program called Twine, which I used to lay out the story states in order, which can be viewed <a href=Stargazer.html>here</a></p>
+<p>I began with another program called Twine, which I used to lay out the story states in order, which can be viewed <a href=Stargazer.html>here</a>. It's also a text-based choose-your-own-adventure game.</p>
 </li>
 
 <li><strong>Technical Merit:</strong>
 What is interesting about your game technology?
+<p>It's heavily based in changes of game state. Each choice that the player comes across is given in a new state, which must be called from any other state.</p>
 </li>
 
 <li><strong>Prototype Postmortem:</strong>
 What did you learn from this prototype?
 What was the easiest or hardest part of making it?
+<p>I learned kind of how game states work. It definitely became a case of reading through and modifying code found via Google, though. The easiest part of making the game was definitely writing the (very simply) story - though adding all of the choices and subsequent states was very, very difficult.
 </li>
 
 <li><strong>Prototype Assets:</strong>
 Did you make your prototype assets from scratch? Did you borrow them? Cite your sources here.
 <ul>
-<li>Bouncing Phaser image: <a href="https://phaser.io/download/logo">Phaser logo</a></li>
+<li>I had no assets; only text.</li>
 </ul>
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
 Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
+<p><a href="https://www.joshmorony.com/phaser-fundamentals-using-states-in-phaser/">Josh Morony's Using States in Phaser</a></p>
+<p><a href="http://perplexingtech.weebly.com/game-dev-blog/using-states-in-phaserjs-javascript-game-developement">Perplexing Tech's Using States in Phaser</a></p>
+<p>Phaser Example: <a href="https://phaser.io/examples/v2/text/display-text-word-by-word">Display Text Word by Word</a></p>
 </li>
 
 <li><strong>High Concept:</strong>
 A one-sentence summary of your game.
+<p>You wake up in the middle of a field with no memory of who you are or how you got there; find the truth about yourself or, possibly, die trying.</p>
 </li>
 
 <li><strong>Theme:</strong>
 State which of the Storymatic themes you used.
+<p>Stargazer, caught, and fainter were all used in different aspects of the story.</p>
 </li>
 
 <li><strong>Mandated Variety:</strong>
 State which input, randomness, genre, and play style you used in this prototype.
+<p>It's a keyboard-input, text-based choose-your-own-adventure game</p>
 </li>
 
 <li><strong>Prototype Goal:</strong>
 What game mechanic is this prototype evaluating?
+<p>Functionality of text-based gameplay: from aesthetics of text scrolling to mapping of gamestates to choices.</p>
 </li>
 
 <li><strong>Player Experience Goals:</strong>
 What experience do you want players to have when playing your game?
+<p>For players who used to have Choose Your Own Adventure books, I want to provide a sense of nostalgia (and the ease of not having to flip pages). For those of us who have not done that, I want to provide an interactive story that is simple enough for anyone to understand and enjoy</p>
 </li>
 
 <li><strong>Gameplay:</strong>
 A paragraph describing the actions the player can perform, the system dynamics, and the core mechanic. Include a concise explanation of the prototype’s inputs and their expected effects (how to play). You can also describe game play that is not in the prototype. You may include mock-up images for parts of the game not in the prototype.
+<p>Players are given numbered options at each choice, from which they select using the number keys. Each choice has the potential to lead to a different outcome.</p>
 </li>
 
 <li><strong>Strategies:</strong>
 What player strategies do you expect will be effective at playing this game?
+<p>Many scenes and interactions during gameplay take unexpected turns. Sometimes making the logical decision might lead you astray... Because the plot is somewhat complicated, the player can take several different paths and explore the story and characters further.</p>
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
 A paragraph about the world your game is set in and who the characters are. What makes the game world and its occupants unique and interesting? Do the tokens represent something? If the game has a backstory, mention it here. If the game is abstract, then say so.
 How will the dramatic tension interact with the gameplay tension?
+<p>You are an amnesiac; you have no idea who you are or what has happened to you. In certain branches of the plot, you meet a woman who seems to recognize you, otherwise there are almost (spoilers) no other characters. You are tempted to explore your surroundings in order to find out some information about who (or what) you are. This dramatic tension will push gameplay choices towards curiosity and exploration.</p>
 </li>
 
 <li><strong>Target Audience:</strong>
 A single sentence that describes the demographic you're trying to reach.
+<p>Mostly readers. People who care more for story than gameplay. It's simple and easy to follow.</p>
 </li>
 
 <li><strong>Play Time:</strong>
 How long does your game take to play?
+<p>No more than 10 minutes for a slow reader.</p>
 </li>
 
 </ul>
