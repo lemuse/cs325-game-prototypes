@@ -178,7 +178,13 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 
 
 
+
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+
+
 
 
 
@@ -284,7 +290,15 @@ Ghulian steps aside, gesturing to the now-complete world behind him. &quot;Your 
 [[To the right, towards a castle with rotating turrets.-&gt;CASTLE]]
 [[Straight ahead, into a quaint, almost normal-looking village.-&gt;VILLAGE]]
 
-</tw-passagedata><tw-passagedata pid="3" name="FOREST" tags="metalforest" position="189,501" size="100,100">As you walk, you reach up and touch one of the low-hanging leaves. It&#39;s like a thin sheet of tin, like a hammered-flat soup can. It yanks itself out of your grip, startling you.
+</tw-passagedata><tw-passagedata pid="3" name="FOREST" tags="metalforest" position="189,501" size="100,100">&lt;&lt;if visited(&quot;POND&quot;)&gt;&gt;\
+You move quickly, tossing a cheery greeting to the first not-oak tree you&#39;d met the last time you were here.
+
+&lt;&lt;if $saucer &lt; 2&gt;&gt;\
+[[You head back to the not-oak who&#39;d told you the riddle, ready to try again.-&gt;FOREST - TWO]]
+&lt;&lt;endif&gt;&gt;\
+[[You move on past the second not-oak, straight to the pond.-&gt;POND]]
+&lt;&lt;else&gt;&gt;\
+As you walk, you reach up and touch one of the low-hanging leaves. It&#39;s like a thin sheet of tin, like a hammered-flat soup can. It yanks itself out of your grip, startling you.
 
 The leaves on the trees rattle together like wind chimes, covering up a sound like murmuring voices. You wonder (rather childishly) if the trees themselves are having a conversation. But when this place has a caretaker as strange as Ghulian, perhaps talking trees are just par to the course.
 
@@ -315,6 +329,7 @@ You now have &lt;&lt;print $saucer&gt;&gt; saucer!
 You thank the tree and take your leaf.
 
 [[Continue through the forest.-&gt;FOREST - TWO]]
+&lt;&lt;endif&gt;&gt;\
 [[Head back to Ghulian and the crossroads.-&gt;CROSSROADS]]</tw-passagedata><tw-passagedata pid="4" name="CASTLE" tags="castle" position="826,508" size="100,100">The castle, upon closer inspection, appears to be made out of seashells and sand. You can hear the sound of an ocean that whatever twisted force determines the shape of the world has not deigned to actually drag into being. You can even smell the briny, salty sea-smell. As you move closer, words start being scrawled at your feet.
 
 Spoon... (this seems like a promising start)
