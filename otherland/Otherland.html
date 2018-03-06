@@ -181,7 +181,11 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 
 
 
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+
 
 
 
@@ -467,8 +471,8 @@ You pick a tree at random.
 &lt;&lt;if $treeselect is 3&gt;&gt;
 &quot;Hi there, you say to the third, whose tea bags smell spicy-sweet, like Chai. &quot;I was hoping you&#39;d give me some of your tea bags.&quot; You glance hopefully up towards the trunk before adding: [[&quot;If you have a riddle, I&#39;ll give it my best shot.&quot;-&gt;POND RIDDLE THREE]]
 &lt;&lt;endif&gt;&gt;\
-&lt;&lt;endif&gt;&gt;\</tw-passagedata><tw-passagedata pid="12" name="POND RIDDLE ONE" tags="metalforest" position="35,1244" size="100,100">&lt;&lt;set $answer to prompt(&quot;If there are forty cups on the table and one breaks, how many are left?&quot;,&quot;&quot;)&gt;&gt;\
-&lt;&lt;if $answer is &quot;3&quot; or &quot;three&quot;&gt;&gt;\
+&lt;&lt;endif&gt;&gt;\</tw-passagedata><tw-passagedata pid="12" name="POND RIDDLE ONE" tags="metalforest" position="35,1244" size="100,100">&lt;&lt;set $answer to prompt(&quot;If there are forty cups on the table and one breaks, how many are left? (Please write out the word, not just a number)&quot;,&quot;&quot;)&gt;&gt;\
+&lt;&lt;if $answer is &quot;three&quot;&gt;&gt;\
 The tree chortles with delight. &quot;Yes, four tea and forty... Certainly, I&#39;ll give you at least one for your wit.&quot;
 &lt;&lt;set $teabag to ($teabag + either(1,2,3))&gt;&gt;
 You now have &lt;&lt;print $teabag&gt;&gt; &lt;&lt;if $teabag neq 1&gt;&gt;teabags&lt;&lt;else&gt;&gt;teabag&lt;&lt;endif&gt;&gt;.
@@ -478,14 +482,14 @@ The tree rustles its tea-leaves. &quot;No, no. You&#39;re far too literal. Forty
 [[Return to the pond.-&gt;POND]]
 [[Return to Ghulian at the crossroads.-&gt;CROSSROADS]]</tw-passagedata><tw-passagedata pid="13" name="POND RIDDLE TWO" tags="metalforest" position="185,1244" size="100,100">&lt;&lt;set $answer to prompt(&quot;I go in dry and come out wet; the longer I&#39;m in, the stronger I get. What am I?&quot;,&quot;&quot;)&gt;&gt;\
 &lt;&lt;if $answer is &quot;tea bag&quot; or &quot;teabag&quot;&gt;&gt;\
-&quot;Well done, well done!&quot; The Scottish Breakfast tree booms. &quot;I&#39;ll certainly aid in yer quest noo. Nothing like tea bags to make a tea party worthwhile. Here&#39;s two for you, my dear.&quot;
+&quot;Well done, well done!&quot; The Scottish Breakfast tree booms. &quot;I&#39;ll certainly aid in yer quest noo. Nothing like tea bags to make a tea party worthwhile. Here&#39;s two for you.&quot;
 &lt;&lt;set $teabag += 2&gt;&gt;
 You now have &lt;&lt;print $teabag&gt;&gt; teabags!
 &lt;&lt;else&gt;&gt;\
 The Scottish Breakfast tree groans at your mistake. &quot;Not so, not so. Ye&#39;ve a verra long way to go before gettin&#39; tea from me.
 &lt;&lt;endif&gt;&gt;
 [[Return to the pond.-&gt;POND]]
-[[Return to Ghulian at the crossroads.-&gt;CROSSROADS]]</tw-passagedata><tw-passagedata pid="14" name="POND RIDDLE THREE" tags="metalforest" position="335,1244" size="100,100">The Chai tree merely laughs. &quot;I don&#39;t have a riddle to tell, but I&#39;ll give you a tea bag just for chai-ing.&quot; As the tree chortles at its own pun, it extends a branch towards you, so that you may pluck a fragrant sachet.
+[[Return to Ghulian at the crossroads.-&gt;CROSSROADS]]</tw-passagedata><tw-passagedata pid="14" name="POND RIDDLE THREE" tags="metalforest" position="335,1244" size="100,100">The Chai tree merely laughs. &quot;I don&#39;t have a riddle to tell, but I&#39;ll give you a tea bag just for chai-ing.&quot; As the tree chuckles at its own pun, it extends a branch towards you, so that you may pluck a fragrant sachet.
 &lt;&lt;set $teabag += 1&gt;&gt;
 You have &lt;&lt;print $teabag&gt;&gt; &lt;&lt;if $teabag neq 1&gt;&gt;teabags&lt;&lt;else&gt;&gt;teabag&lt;&lt;endif&gt;&gt;.
 
