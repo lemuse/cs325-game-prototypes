@@ -127,7 +127,29 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -363,91 +385,107 @@ Actions:
 &lt;&lt;set $healed = 0&gt;&gt;
 &lt;&lt;set $damage_dealt = random(0,20)&gt;&gt;
 &lt;&lt;if $boss is 1&gt;&gt;
-&lt;&lt;set $damage_received = random(10,35)&gt;&gt;
+    &lt;&lt;set $damage_received = random(10,35)&gt;&gt;
 &lt;&lt;else&gt;&gt;
-&lt;&lt;set $damage_received = random(0,15)&gt;&gt;
+    &lt;&lt;set $damage_received = random(0,15)&gt;&gt;
 &lt;&lt;endif&gt;&gt;
 &lt;&lt;set $spec = random(1,6)&gt;&gt;
 &lt;&lt;if $battle_type is $enemy_weak&gt;&gt;
-&lt;&lt;set $damage_dealt *= 1.5&gt;&gt;
+    &lt;&lt;set $damage_dealt *= 1.5&gt;&gt;
 &lt;&lt;endif&gt;&gt;
 &lt;&lt;if $enemy_type is $battle_weak&gt;&gt;
-&lt;&lt;set $damage_received *= 1.25&gt;&gt;
+    &lt;&lt;set $damage_received *= 1.5&gt;&gt;
 &lt;&lt;endif&gt;&gt;
 &lt;&lt;if $battle_special is &quot;Critical Hit&quot;&gt;&gt;
-&lt;&lt;if $spec is 6&gt;&gt;
-CRITICAL HIT!
-&lt;&lt;set $damage_dealt *= 2&gt;&gt;
-&lt;&lt;endif&gt;&gt;
+    &lt;&lt;if $spec is 6&gt;&gt;
+        CRITICAL HIT!
+        &lt;&lt;set $damage_dealt *= 2&gt;&gt;
+    &lt;&lt;endif&gt;&gt;
 &lt;&lt;endif&gt;&gt;
 &lt;&lt;if $battle_special is &quot;Healing&quot;&gt;&gt;
-&lt;&lt;if $spec is 6&gt;&gt;
-&lt;&lt;set $healed to prompt(&quot;Heal Hero 1 or 2? (Type number)&quot;,&quot;0&quot;)&gt;&gt;
-&lt;&lt;if $healed is 1&gt;&gt;
-&lt;&lt;set $Hero1_health += $damage_dealt&gt;&gt;
-&lt;&lt;endif&gt;&gt;
-&lt;&lt;if $healded is 2&gt;&gt;
-&lt;&lt;set $Hero2_health += $damage_dealt&gt;&gt;
-&lt;&lt;endif&gt;&gt;
-&lt;&lt;endif&gt;&gt;
+    &lt;&lt;if $spec is 6&gt;&gt;
+        &lt;&lt;set $healed to prompt(&quot;Heal Hero 1 or 2? (Type number)&quot;,&quot;0&quot;)&gt;&gt;
+        &lt;&lt;if $healed is 1&gt;&gt;
+            &lt;&lt;set $Hero1_health += $damage_dealt&gt;&gt;
+        &lt;&lt;endif&gt;&gt;
+        &lt;&lt;if $healded is 2&gt;&gt;
+            &lt;&lt;set $Hero2_health += $damage_dealt&gt;&gt;
+        &lt;&lt;endif&gt;&gt;
+    &lt;&lt;endif&gt;&gt;
 &lt;&lt;endif&gt;&gt;
 &lt;&lt;if $healed is 0&gt;&gt;
-&lt;&lt;set $enemy_health -= $damage_dealt&gt;&gt;
+    &lt;&lt;set $enemy_health -= $damage_dealt&gt;&gt;
 &lt;&lt;endif&gt;&gt;
 &lt;&lt;endnobr&gt;&gt;
 &lt;&lt;if $enemy_health &lt;= 0&gt;&gt;
-&lt;&lt;if $boss is 1&gt;&gt;
-You have defeated the final Shadow. &lt;&lt;print $Hero1_name&gt;&gt; and &lt;&lt;print $Hero2_name&gt;&gt; will return to Jaerland victorious - as heroes!
-[[Return home-&gt;VICTORY]]
+    &lt;&lt;if $boss is 1&gt;&gt;
+        You have defeated the final Shadow. &lt;&lt;print $Hero1_name&gt;&gt; and &lt;&lt;print $Hero2_name&gt;&gt; will return to Jaerland victorious - as heroes!
+        [[Return home-&gt;VICTORY]]
+    &lt;&lt;else&gt;&gt;
+        &lt;&lt;set $reward = random(10,250)&gt;&gt;
+        You have defeated your enemy in battle and received &lt;&lt;print $reward&gt;&gt; coins!
+        &lt;&lt;set $coins += $reward&gt;&gt;
+		&lt;&lt;if $battlehero is 1&gt;&gt;\
+			&lt;&lt;set $$Hero1_health = $battlehealth&gt;&gt;\
+		&lt;&lt;else&gt;&gt;\
+			&lt;&lt;set $Hero2_health = $battlehealth&gt;&gt;\
+		&lt;&lt;endif&gt;&gt;\
+        [[Time to camp for the night-&gt;CAMP]]
+    &lt;&lt;endif&gt;&gt;
 &lt;&lt;else&gt;&gt;
-&lt;&lt;set $reward = random(10,250)&gt;&gt;
-You have defeated your enemy in battle and received &lt;&lt;print $reward&gt;&gt; coins!
-&lt;&lt;set $coins += $reward&gt;&gt;
-[[Time to camp for the night-&gt;CAMP]]
-&lt;&lt;endif&gt;&gt;
-&lt;&lt;else&gt;&gt;
-&lt;&lt;if $healed is &quot;1&quot;&gt;&gt;\
-You healed &lt;&lt;print $Hero1_name&gt;&gt; by &lt;&lt;print $damage_dealt&gt;&gt;.
-&lt;&lt;set $Hero2_health += $damage_dealt&gt;&gt;\
+    &lt;&lt;if $healed is &quot;1&quot;&gt;&gt;\
+        You healed &lt;&lt;print $Hero1_name&gt;&gt; by &lt;&lt;print $damage_dealt&gt;&gt;.
+        &lt;&lt;set $Hero2_health += $damage_dealt&gt;&gt;\
+		&lt;&lt;if $battlehero = 1&gt;&gt;\
+			&lt;&lt;set $battle_health = $Hero1_health&gt;&gt;\
+		&lt;&lt;endif&gt;&gt;\
+    &lt;&lt;endif&gt;&gt;\
+    &lt;&lt;if $healed is &quot;2&quot;&gt;&gt;\
+        You healed &lt;&lt;print $Hero2_name&gt;&gt; by &lt;&lt;print $damage_dealt&gt;&gt;.
+        &lt;&lt;set $Hero2_health += $damage_dealt&gt;&gt;\
+		&lt;&lt;if $battlehero = 2&gt;&gt;\
+			&lt;&lt;set $battle_health = $Hero2_health&gt;&gt;\
+		&lt;&lt;endif&gt;&gt;\
+    &lt;&lt;endif&gt;&gt;\
+    &lt;&lt;if $healed is 0&gt;&gt;\
+        You dealt &lt;&lt;print $damage_dealt&gt;&gt; damage to the enemy!
+    &lt;&lt;endif&gt;&gt;\
+	&lt;&lt;if $turn_count is 0&gt;&gt;\
+		&lt;&lt;set $battle_health -= $damage_received&gt;&gt;\
+		&lt;&lt;if $battlehero is 1&gt;&gt;\
+			&lt;&lt;set $Hero1_health = $battle_health&gt;&gt;\
+		&lt;&lt;endif&gt;&gt;\
+		&lt;&lt;if $battlehero is 2&gt;&gt;\
+			&lt;&lt;set $Hero2_health = $battlehealth&gt;&gt;\
+		&lt;&lt;endif&gt;&gt;\
+	&lt;&lt;else&gt;&gt;\
+		Your trap prevented the enemy from acting!
+		&lt;&lt;set $turn_count -= 1&gt;&gt;\
+		&lt;&lt;set $damage_received = 0&gt;&gt;\
+	&lt;&lt;endif&gt;&gt;\
 &lt;&lt;endif&gt;&gt;\
-&lt;&lt;if $healed is &quot;2&quot;&gt;&gt;\
-You healed &lt;&lt;print $Hero2_name&gt;&gt; by &lt;&lt;print $damage_dealt&gt;&gt;.
-&lt;&lt;set $Hero2_health += $damage_dealt&gt;&gt;\
-&lt;&lt;endif&gt;&gt;\
-&lt;&lt;if $healed is 0&gt;&gt;\
-You dealt &lt;&lt;print $damage_dealt&gt;&gt; damage to the enemy!
-&lt;&lt;endif&gt;&gt;\
-&lt;&lt;nobr&gt;&gt;
-&lt;&lt;if $turn_count is 0&gt;&gt;
-&lt;&lt;set $battle_health -= $damage_received&gt;&gt;
-&lt;&lt;if $battlehero is 1&gt;&gt;
-&lt;&lt;set $Hero1_health = $battle_health&gt;&gt;
-&lt;&lt;endif&gt;&gt;
-&lt;&lt;if $battlehero is 2&gt;&gt;
-&lt;&lt;set $Hero2_health = $battlehealth&gt;&gt;
-&lt;&lt;endif&gt;&gt;
-&lt;&lt;else&gt;&gt;
-Your trap prevented the enemy from acting!
-&lt;&lt;set $damage_received = 0&gt;&gt;
-&lt;&lt;endif&gt;&gt;
-&lt;&lt;endnobr&gt;&gt;
-&lt;&lt;if $battle_health &gt; 0&gt;&gt;\
-You received &lt;&lt;print $damage_received&gt;&gt; damage and have &lt;&lt;print $battle_health&gt;&gt; health remaining.
-[[Continue-&gt;BATTLE MENU]]
-&lt;&lt;else&gt;&gt;\
-&lt;&lt;if ($battlehero is 1) and ($Hero2_health &gt; 0)&gt;&gt;\
-&lt;&lt;print $Hero1_name&gt;&gt; has died! &lt;&lt;print $Hero2_name&gt;&gt; must go into battle to take his place!
-&lt;&lt;set $battlehero = 2; $battle_weak = $Hero2_weak; $battle_strong = $Hero2_strong; $battle_special = $Hero2_special; $battle_health = $Hero2_health&gt;&gt;
-[[Return to the fight-&gt;BATTLE MENU]]
-&lt;&lt;endif&gt;&gt;\
-&lt;&lt;if ($battlehero is 2) and ($Hero1_health &gt; 0)&gt;&gt;\
-&lt;&lt;print $Hero2_name&gt;&gt; has died! &lt;&lt;print $Hero1_name&gt;&gt; must go into battle to take his place!
-&lt;&lt;set $battlehero = 1; $battle_weak = $Hero1_weak; $battle_strong = $Hero1_strong; $battle_special = $Hero1_special; $battle_health = $Hero1_health&gt;&gt;
-[[Return to the fight-&gt;BATTLE MENU]]
-&lt;&lt;endif&gt;&gt;\
-&lt;&lt;else&gt;&gt;\
-[[Oh dear, both of your heroes have perished...-&gt;GAME OVER]]
-&lt;&lt;endif&gt;&gt;\
+&lt;&lt;if ($battle_health &gt; 0) and ($enemy_health &gt; 0)&gt;&gt;\
+	You received &lt;&lt;print $damage_received&gt;&gt; damage and have &lt;&lt;print $battle_health&gt;&gt; health remaining.
+	[[Continue-&gt;BATTLE MENU]]
+	&lt;&lt;if $battlehero is 1&gt;&gt;\
+		&lt;&lt;set $$Hero1_health = $battlehealth&gt;&gt;\
+	&lt;&lt;else&gt;&gt;\
+		&lt;&lt;set $Hero2_health = $battlehealth&gt;&gt;\
+	&lt;&lt;endif&gt;&gt;\
+&lt;&lt;elseif $battle_health &lt;= 0&gt;&gt;\
+	&lt;&lt;if ($battlehero is 1) and ($Hero2_health &gt; 0)&gt;&gt;\
+		&lt;&lt;print $Hero1_name&gt;&gt; has died! &lt;&lt;print $Hero2_name&gt;&gt; must go into battle to take his place!
+		&lt;&lt;set $battlehero = 2; $battle_weak = $Hero2_weak; $battle_strong = $Hero2_strong; $battle_special = $Hero2_special; $battle_health = $Hero2_health&gt;&gt;
+		[[Return to the fight-&gt;BATTLE MENU]]
+	&lt;&lt;endif&gt;&gt;\
+	&lt;&lt;if ($battlehero is 2) and ($Hero1_health &gt; 0)&gt;&gt;\
+		&lt;&lt;print $Hero2_name&gt;&gt; has died! &lt;&lt;print $Hero1_name&gt;&gt; must go into battle to take his place!
+		&lt;&lt;set $battlehero = 1; $battle_weak = $Hero1_weak; $battle_strong = $Hero1_strong; $battle_special = $Hero1_special; $battle_health = $Hero1_health&gt;&gt;
+		[[Return to the fight-&gt;BATTLE MENU]]
+	&lt;&lt;endif&gt;&gt;\
+	&lt;&lt;if ($Hero2_health &lt;= 0) and ($Hero1_health &lt;= 0)&gt;&gt;
+		[[Oh dear, both of your heroes have perished...-&gt;GAME OVER]]
+	&lt;&lt;endif&gt;&gt;\
 &lt;&lt;endif&gt;&gt;\</tw-passagedata><tw-passagedata pid="18" name="BLOCKED" tags="" position="276,1889" size="100,100">You focus on your defense and therefore receive no damage this round.
 
 [[Continue-&gt;BATTLE MENU]]</tw-passagedata><tw-passagedata pid="19" name="INVENTORY" tags="" position="426,1889" size="100,100">Which would you like to use?
@@ -483,14 +521,13 @@ Coins: &lt;&lt;print $coins&gt;&gt;
 [[Buy more?-&gt;JAERLAND SHOP]]
 [[Set off on your journey-&gt;HALLERY BORDER]]</tw-passagedata><tw-passagedata pid="24" name="SWAP" tags="" position="718,1889" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;if ($battlehero is 1) and ($Hero2_health &gt; 0)&gt;&gt;
-&lt;&lt;set $battlehero = 2; $battle_health = $Hero2_health; $battle_type = $Hero2_type; $battle_weak = $Hero2_weak; $battle_strong = $Hero2_strong; $battle_special = $Hero2_special&gt;&gt;
-&lt;&lt;print $Hero2_name&gt;&gt; will take charge of the battle in &lt;&lt;print $Hero1_name&gt;&gt;&#39;s place.
-&lt;&lt;endif&gt;&gt;
+	&lt;&lt;set $battlehero = 2; $battle_health = $Hero2_health; $battle_type = $Hero2_type; $battle_weak = $Hero2_weak; $battle_strong = $Hero2_strong; $battle_special = $Hero2_special&gt;&gt;
+	&lt;&lt;print $Hero2_name&gt;&gt; will take charge of the battle in &lt;&lt;print $Hero1_name&gt;&gt;&#39;s place.
 &lt;&lt;else if ($battlehero is 2) and ($Hero1_health &gt; 0)&gt;&gt;
-&lt;&lt;set $battlehero = 1; $battle_health = $Hero1_health; $battle_type = $Hero1_type; $battle_weak = $Hero1_weak; $battle_strong = $Hero1_strong; $battle_special = $Hero1_special&gt;&gt;
-&lt;&lt;print $Hero1_name&gt;&gt; will take charge of the battle in &lt;&lt;print $Hero2_name&gt;&gt;&#39;s place.
+	&lt;&lt;set $battlehero = 1; $battle_health = $Hero1_health; $battle_type = $Hero1_type; $battle_weak = $Hero1_weak; $battle_strong = $Hero1_strong; $battle_special = $Hero1_special&gt;&gt;
+	&lt;&lt;print $Hero1_name&gt;&gt; will take charge of the battle in &lt;&lt;print $Hero2_name&gt;&gt;&#39;s place.
 &lt;&lt;else&gt;&gt;
-You cannot switch heroes.
+	You cannot switch heroes.
 &lt;&lt;endif&gt;&gt;
 &lt;&lt;endnobr&gt;&gt;
 [[Return to battle-&gt;BATTLE MENU]]</tw-passagedata><tw-passagedata pid="25" name="RESTOCK" tags="" position="53,1628" size="100,100">Coins: &lt;&lt;print $coins&gt;&gt;
