@@ -175,7 +175,9 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 
 
 
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
 
 
 
@@ -587,7 +589,7 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 			&lt;&lt;set $heal = prompt(&quot;Heal Hero 1 or Hero 2? (Type number)&quot;,&quot;0&quot;)&gt;&gt;
 			&lt;&lt;if $heal is &quot;1&quot;&gt;&gt;
 				&lt;&lt;if $Hero1_health &gt; 0&gt;&gt;
-					&lt;&lt;set $Hero1_health += damage&gt;&gt;
+					&lt;&lt;set $Hero1_health += $damage&gt;&gt;
 					Heal HERO 1 by &lt;&lt;print $damage&gt;&gt;
 					&lt;&lt;if $Hero1_health &gt; 120&gt;&gt;
 						&lt;&lt;set $Hero1_health = 120&gt;&gt;
@@ -602,7 +604,7 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 			&lt;&lt;elseif $heal is &quot;2&quot;&gt;&gt;
 				&lt;&lt;if $Hero2_health &gt; 0&gt;&gt;
 					Heal HERO 2 by &lt;&lt;print $damage&gt;&gt;
-					&lt;&lt;set $Hero2_health += damage&gt;&gt;
+					&lt;&lt;set $Hero2_health += $damage&gt;&gt;
 					&lt;&lt;if $Hero2_health &gt; 120&gt;&gt;
 						&lt;&lt;set $Hero2_health = 120&gt;&gt;
 					&lt;&lt;endif&gt;&gt;
