@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Shadow Slayers - Version 2</title>
+    <script src="js/phaser.js"></script>
+    <script src="js/main.js"></script>
+
+<style>
+body
+{
+    color: #777;
+    font-family: "Avenir", Verdana, sans-serif;
+}
+#readme
+{
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+<div id="game"></div>
+<div id="readme">
+<h2>Shadow Slayers</h2>
+
+<h3><a href=ShadowSlayers.html>Click here to play!</a></h3>
+
+<ul>
+<li><strong>Originality:</strong>
+What is original about your game?
+<p>This is a text-based RPG, based on the gamestyle of early Final Fantasy and Pokemon. It incorporates attack, defense, item use, character swapping, and fleeing. It also incorporates several counters and other variables to keep track of item use and type strengths/weaknesses.</p>
+</li>
+
+<li><strong>Technical Merit:</strong>
+What is interesting about your game technology?
+<p>Player choices initiate changes in variable state, though like all RPG-type games there is a high reliance on randomness for things like damage. The game states shift and repeat so that various large blocks of code can be reused and adapted for different situations governed by player choice and/or randomness.</p>
+</li>
+
+<li><strong>Prototype Postmortem:</strong>
+What did you learn from this prototype?
+<p>I learned more about constructing a non-linear storyline with conditional branching, collectibles, and I/O. </p>
+What was the easiest or hardest part of making it?
+<p>The most difficult part was applying Twine's pseudo-language to specific tasks that are far simpler to implement in a more advanced coding language (namely the elaborate branching structure of the battle menu and the attack screen).</p>
+</li>
+
+<li><strong>Prototype Assets:</strong>
+Did you make your prototype assets from scratch? Did you borrow them? Cite your sources here.
+<ul>
+<li>I had no assets; only text. (Though the next iteration will have images and sound effects, I promise!)</li>
+</ul>
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
+<p>No other games are referenced, though the mechanics are similar to my previous digital assignments 3, 4, and 5.</p>
+</li>
+
+<li><strong>High Concept:</strong>
+A one-sentence summary of your game.
+<p>In Jaerland, all young heroes-in-training must venture out into the wilderness of Hallery, where the ghosts of heroes past lurk, trying to best these trainees in battle to swell their own ranks; the player controls a team of two wannabe heroes making their first solo trek into Hallery, where they must battle 10 lesser Shadows and then 1 boss shadow in order to earn the title Hero.</p>
+</li>
+
+<li><strong>Theme:</strong>
+State which of the Storymatic themes you used.
+<p>I did not use any of the themes for this project.</p>
+</li>
+
+<li><strong>Mandated Variety:</strong>
+State which input, randomness, genre, and play style you used in this prototype.
+<p>Input: keyboard and mouse. Randomness: random number generation, random enemy-type selection. Genre: RPG, text-based, choose-your-own-adventure. Play style: point and click, word/phrase typing. </p>
+</li>
+
+<li><strong>Prototype Goal:</strong>
+What game mechanic is this prototype evaluating?
+<p>Variable-tracking, damage counter, item use, and goal-achievement.</p>
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+What experience do you want players to have when playing your game?
+<p>By trying to limit the use of text, I hope to invoke players' memories of old Final Fantasy and Pokemon games, with the simple selection-based battle style and rudimentary story.</p>
+</li>
+
+<li><strong>Gameplay:</strong>
+A paragraph describing the actions the player can perform, the system dynamics, and the core mechanic. Include a concise explanation of the prototype’s inputs and their expected effects (how to play). You can also describe game play that is not in the prototype. You may include mock-up images for parts of the game not in the prototype.
+<p>A player is given a list of characters of four different types, which have strengths and weaknesses to other types, and told to choose two. Then these two characters can be named using keyboard input. Players can purchase items and maintain an inventory using the mouse (buyable options appear or disappear based on available funds). Battles require the use of Attacks, Blocks, Items, Switching Heroes, and Running. Attacks will do a random amount of damage to the enemy (and the character will receive a random amount of damage in return). Blocking will prevent damage from being dealth and received for one turn. Items can perform different actions as described. Switching Heroes allows the player to change which character they use in battle. Running allows the player to flee from a battle, though the battle count will not be incremented and the player will still have to defeat 11 enemies to win.</p>
+</li>
+
+<li><strong>Strategies:</strong>
+What player strategies do you expect will be effective at playing this game?
+<p>Players will have to utilize type strengths and weaknesses in order to do more damage and receive less from enemies. Players may also utilize items to give an advantage in battle. Special attacks may allow characters to either do extra damage or heal injured characters. Because each battle earns coins, a smart player will restock his inventory between every battle.</p>
+</li>
+
+<li><strong>Story/Setting/Premise:</strong>
+A paragraph about the world your game is set in and who the characters are. What makes the game world and its occupants unique and interesting? Do the tokens represent something? If the game has a backstory, mention it here. If the game is abstract, then say so.
+How will the dramatic tension interact with the gameplay tension?
+<p>Jaerland, a fantasy realm which trains its young men to be heroes, requires one practical examination: venture into neighboring wilderness, Hallery, and kill a Shadow Boss. But in order to reach one of these bosses, pairs of heroes-in-training must first kill 10 underlings. There's a catch, though: all of these Shadows which inhabit Hallery were once Jaerlanders like them and must be defeated in battle so they may finally rest.</p>
+</li>
+
+<li><strong>Target Audience:</strong>
+A single sentence that describes the demographic you're trying to reach.
+<p>Fans of fantasy RPGs, Pokemon, or Final Fantasy.</p>
+</li>
+
+<li><strong>Play Time:</strong>
+How long does your game take to play?
+<p>Around 20 minutes for a full playthrough.</p>
+</li>
+
+</ul>
+</div>
+</body>
+</html>
