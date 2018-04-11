@@ -176,7 +176,13 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 
 
 
+
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+
+
 
 
 
@@ -262,6 +268,7 @@ Heroes (and Shadows) can be one of four different types: Knight, Barbarian, Mage
 &lt;&lt;set $revives = 0&gt;&gt;
 &lt;&lt;set $damage_tot = 0&gt;&gt;
 &lt;&lt;set $dam_rec_tot = 0&gt;&gt;
+&lt;&lt;set $death_count = 0&gt;&gt;
 &lt;&lt;endnobr&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="FIRST HERO SELECT" tags="" position="412,350" size="100,100">Choose your first hero:
 
 [[Hero 1: Knight][$Hero1 = 1; $Hero1_health = 120; $Hero1_type = &quot;Knight&quot;]]
@@ -581,8 +588,8 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 &lt;&lt;endif&gt;&gt;
 &lt;&lt;set $damage = random(0,30)&gt;&gt;
 &lt;&lt;if $spec is 6&gt;&gt;
-	&lt;&lt;set $special = prompt(&quot;Use special attack? (1 for yes or 0 for no)&quot;,&quot;0&quot;)&gt;&gt;
-	&lt;&lt;if $special is &quot;1&quot;&gt;&gt;
+	&lt;&lt;set $special = confirm(&quot;Use special attack?&quot;)&gt;&gt;
+	&lt;&lt;if $special is true&gt;&gt;
 		&lt;&lt;set $spec_count += 1&gt;&gt;
 		&lt;&lt;set $spec = 0&gt;&gt;
 		&lt;&lt;if $battle_special is &quot;Healing&quot;&gt;&gt;
@@ -590,7 +597,8 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 			&lt;&lt;if $heal is &quot;1&quot;&gt;&gt;
 				&lt;&lt;if $Hero1_health &gt; 0&gt;&gt;
 					&lt;&lt;set $Hero1_health += $damage&gt;&gt;
-					Heal HERO 1 by &lt;&lt;print $damage&gt;&gt;
+					Heal Hero 1 by &lt;&lt;print $damage&gt;&gt;
+					&lt;&lt;set $damage = 0&gt;&gt;
 					&lt;&lt;if $Hero1_health &gt; 120&gt;&gt;
 						&lt;&lt;set $Hero1_health = 120&gt;&gt;
 					&lt;&lt;endif&gt;&gt;
@@ -603,8 +611,9 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 				&lt;&lt;endif&gt;&gt;
 			&lt;&lt;elseif $heal is &quot;2&quot;&gt;&gt;
 				&lt;&lt;if $Hero2_health &gt; 0&gt;&gt;
-					Heal HERO 2 by &lt;&lt;print $damage&gt;&gt;
+					Heal Hero 2 by &lt;&lt;print $damage&gt;&gt;
 					&lt;&lt;set $Hero2_health += $damage&gt;&gt;
+					&lt;&lt;set $damage = 0&gt;&gt;
 					&lt;&lt;if $Hero2_health &gt; 120&gt;&gt;
 						&lt;&lt;set $Hero2_health = 120&gt;&gt;
 					&lt;&lt;endif&gt;&gt;
@@ -630,7 +639,6 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 	Your hero is strong against the enemy&#39;s type!
 	&lt;&lt;set $damage *= 1.5&gt;&gt;\
 &lt;&lt;endif&gt;&gt;\
-&lt;&lt;if $heal is 0&gt;&gt;\
 	&lt;&lt;set $enemy_health -= $damage&gt;&gt;\
 	&lt;&lt;set $damage_tot += $damage&gt;&gt;\
 	&lt;&lt;if $enemy_health &lt;= 0&gt;&gt;\
@@ -659,6 +667,7 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 			&lt;&lt;if $battlehero is 1&gt;&gt;\
 				&lt;&lt;set $Hero1_health = 0&gt;&gt;
 				&lt;&lt;print $Hero1_name&gt;&gt; has fallen in battle!
+				&lt;&lt;set $death_count += 1&gt;&gt;\
 				&lt;&lt;if $Hero2_health &gt; 0&gt;&gt;\
 					[[Return to the fight with Hero 2!-&gt;BATTLE MENU][$battlehero = 2; $battle_health = $Hero2_health; $battle_type = $Hero2_type; $battle_weak = $Hero2_weak; $battle_strong = $Hero2_strong; $battle_special = $Hero2_special]]
 				&lt;&lt;else&gt;&gt;
@@ -668,6 +677,7 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 			&lt;&lt;if $battlehero is 2&gt;&gt;\
 				&lt;&lt;set $Hero2_health = 0&gt;&gt;
 				&lt;&lt;print $Hero2_name&gt;&gt; has fallen in battle!
+				&lt;&lt;set $death_count += 1&gt;&gt;\
 				&lt;&lt;if $Hero1_health &gt; 0&gt;&gt;\
 					[[Return to the fight with Hero 1!-&gt;BATTLE MENU][$battlehero = 1; $battle_health = $Hero1_health; $battle_type = $Hero1_type; $battle_weak = $Hero1_weak; $battle_strong = $Hero1_strong; $battle_special = $Hero1_special]]
 				&lt;&lt;else&gt;&gt;
@@ -683,10 +693,10 @@ Your inventory consisted of: &lt;&lt;print $potions&gt;&gt; potions, &lt;&lt;pri
 			&lt;&lt;else&gt;&gt;\
 				&lt;&lt;set $Hero2_health = $battle_health&gt;&gt;
 			&lt;&lt;endif&gt;&gt;\
+			&lt;&lt;set $dam_rec_tot += $damage_received&gt;&gt;\
 		&lt;&lt;endif&gt;&gt;\
 		[[Continue-&gt;BATTLE MENU]]
-	&lt;&lt;endif&gt;&gt;\
-&lt;&lt;endif&gt;&gt;\</tw-passagedata><tw-passagedata pid="28" name="REVIVE" tags="" position="777,1743" size="100,100">&lt;&lt;if $Hero1_health = 0&gt;&gt;\
+	&lt;&lt;endif&gt;&gt;\</tw-passagedata><tw-passagedata pid="28" name="REVIVE" tags="" position="777,1743" size="100,100">&lt;&lt;if $Hero1_health = 0&gt;&gt;\
 	&lt;&lt;set $Hero1_health = 40&gt;&gt;\
 	&lt;&lt;print $Hero1_name&gt;&gt; has been revived; he now has 40 health.
 &lt;&lt;else if $Hero2_health = 0&gt;&gt;\
@@ -740,6 +750,8 @@ Total damage dealt: &lt;&lt;print $damage_tot&gt;&gt;
 Total damage received: &lt;&lt;print $dam_rec_tot&gt;&gt;
 
 Nights spent in Hallery: &lt;&lt;print $camp_count&gt;&gt;
+
+Number of deaths: &lt;&lt;print $death_count&gt;&gt;
 
 &lt;&lt;back&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="LORE" tags="" position="716,55" size="100,100">&#39;&#39;Terms:&#39;&#39;
 **__Shadows:__ The ghosts of fallen heroes, slain during their trial journey to Hallery.
